@@ -16,7 +16,7 @@ public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
-    private String displayString;    // simulates the actual display
+    private String displayString;// simulates the actual display
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
@@ -65,6 +65,9 @@ public class ClockDisplay
         updateDisplay();
     }
 
+    
+            
+        
     /**
      * Return the current time of this display in the format HH:MM.
      */
@@ -77,8 +80,23 @@ public class ClockDisplay
      * Update the internal string that represents the display.
      */
     private void updateDisplay()
-    {
-        displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+    { 
+        String isAm = "AM";  
+        int twelveHour = hours.getValue()%12;
+        if(hours.getValue()<12)
+        {
+            isAm = "AM";
+        }
+        else if(hours.getValue()==24)
+        {
+            isAm = "AM";
+        } 
+        else if(hours.getValue()>12 && hours.getValue()< 24)
+        {
+            isAm = "PM";
+        displayString = twelveHour + ":" + 
+                        minutes.getDisplayValue() + isAm;               
+        }
     }
 }
+
